@@ -97,7 +97,7 @@ class User extends CI_Model{
         }else{
 
             echo "<p>User exists</p>";
-            
+
         }
 
 
@@ -106,7 +106,24 @@ class User extends CI_Model{
 
     }
 
-    public function add(){
+    public function ifExists($login,$password){
+
+        $this->db->select('password');
+        $this->db->from('user');
+        $this->db->where('login',$login);
+        $this->db->limit(1);
+        $query=$this->db->get();
+
+        
+        $user = $query->row();
+
+        if(password_verify($password,$user->password)==1){
+            echo "Client checked";
+        }else{
+            echo "Client blocked";
+        }
+        
+
 
     }
 

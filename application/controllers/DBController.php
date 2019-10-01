@@ -13,7 +13,11 @@ class DBController extends CI_Controller {
 
 
     public function installTables(){
+        
         $this->User->makeTable();
+        
+        //parameters: login and password
+        $this->User->ifExists('admin','admin');
     }
 
 
