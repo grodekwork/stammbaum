@@ -15,6 +15,37 @@ class AuthController extends CI_Controller {
 
     public function index(){
 
+        $this->load->view('welcome_message');
+
+        if($this->session->has_userdata('isLogged')){
+
+            //if user is logged
+
+            //route to content page
+
+
+
+        }else{
+
+            //if user is not logged
+
+
+            
+            //if user submited a form
+
+            if($this->input->post('submit')){
+
+
+
+            }else{
+
+                //login menu
+
+            }
+
+
+        }
+
         
         
         $newdata = array(

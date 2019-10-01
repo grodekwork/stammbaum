@@ -18,6 +18,8 @@ class DBController extends CI_Controller {
         
         //parameters: login and password
         $this->User->ifExists('admin','admin');
+
+        
     }
 
 
