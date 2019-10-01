@@ -67,8 +67,42 @@ class User extends CI_Model{
             echo " created.</p>";
         
         }else{
+            
             echo " existed.</p>";
+
         }
+
+        $this->makeUser();
+
+
+
+    }
+
+    public function makeUser(){
+
+        $this->db->where('login','admin');
+        $this->db->from('user');
+
+        if($this->db->count_all_results()==0){
+
+            $data = [
+                "login" => "admin",
+                "password" => password_hash("admin",PASSWORD_BCRYPT),
+                "hash" => password_hash("admin",PASSWORD_BCRYPT),
+                "role" => "addmin"
+            ];
+    
+            $this->db->insert("user",$data);
+
+        }else{
+
+            echo "<p>User exists</p>";
+            
+        }
+
+
+       
+
 
     }
 
